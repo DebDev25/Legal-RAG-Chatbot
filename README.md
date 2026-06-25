@@ -89,9 +89,6 @@ Legal RAGchatbot/
 │   ├── indian_supreme_court_pdfs/
 │   ├── penal_code/
 │   └── code_of_criminal_procedure/
-├── docs/
-│   └── ARCHITECTURE_GUIDE.md
-├── LegalRAG_Lessons_Learned.docx
 ├── requirements.txt
 └── README.md
 ```
