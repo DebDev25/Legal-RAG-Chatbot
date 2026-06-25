@@ -66,37 +66,6 @@ User Query (natural language)
  Streamlit UI (confidence badge · answer · reasoning · punishment & precedent · reference chips)
 ```
 
-### Block Diagram
-
-```mermaid
-graph TD
-    PDFs("1,000+ Legal PDFs (Cases + IPC + CrPC)") --> Extract[PyMuPDF Block Extractor]
-
-    subgraph Ingestion
-        Extract --> Split["RecursiveCharacterTextSplitter (1200 tok / 200 overlap)"]
-        Split --> Sections["Section-number tagging (regex → metadata)"]
-        Sections --> Embed["all-MiniLM-L6-v2 (384-dim, cosine)"]
-        Embed --> Chroma[("ChromaDB — cosine distance")]
-    end
-
-    User("User Query") --> UI[Streamlit UI]
-
-    subgraph Query Pipeline
-        UI --> Rewrite["Query Rewriting + contamination guards (Ollama qwen2.5:7b)"]
-        Rewrite --> Gate["Cosine Similarity Gate (threshold 0.6)"]
-        Gate --> Intent["Intent + Section Detection"]
-        Intent --> BM25["BM25 Retriever (k=25)"]
-        Intent --> Vec["Vector Retriever (k=25)"]
-        Intent --> Exact["Exact Section Lookup"]
-        Chroma -.-> Vec
-        BM25 & Vec & Exact --> RRF["Reciprocal Rank Fusion (0.4 / 0.6 / 1.0)"]
-        RRF --> Rerank["Cross-Encoder Re-rank + bonuses → top 6 (2+2+2)"]
-        Rerank --> LLM["Ollama qwen2.5:7b — streamed JSON output"]
-    end
-
-    LLM --> UI
-```
-
 ---
 
 ## Project Structure
