@@ -1,0 +1,38 @@
+# ── Large data — never version ─────────────────────────────────────────────
+data/
+storage/
+
+# ── Benchmark outputs (generated, not source) ──────────────────────────────
+benchmarks/results/
+
+# ── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+
+# ── Virtual environment ─────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Environment variables ───────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── HuggingFace model cache (large) ────────────────────────────────────────
+.cache/
+
+# ── IDE ─────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.iml
+
+# ── OS ──────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

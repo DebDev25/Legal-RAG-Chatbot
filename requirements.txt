@@ -1,0 +1,22 @@
+langchain
+langchain-chroma
+langchain-community
+langchain-huggingface
+langchain-ollama
+langchain-core
+langchain-text-splitters
+PyMuPDF
+streamlit
+sentence-transformers
+rank-bm25
+tiktoken
+python-dotenv
+pandas
+matplotlib
+seaborn
+ragas>=0.2.6
+datasets
+# langchain-google-vertexai: NOT used for inference. RAGAS imports a VertexAI
+# module path at load time; this satisfies that import only. The pipeline and
+# evaluation run 100% locally (Ollama + all-MiniLM-L6-v2) — no cloud calls.
+langchain-google-vertexai
